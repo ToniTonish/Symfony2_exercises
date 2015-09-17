@@ -1,0 +1,4 @@
+
+render:
+    path:     /prova-twig
+    defaults: { _controller: AppBundle:Main:render }

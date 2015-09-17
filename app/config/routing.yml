@@ -1,0 +1,7 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+_welcome:
+    path:      /prova-twig/{name}
+    defaults:  { _controller: AppBundle:Main:render }

@@ -1,4 +1,8 @@
 
 render:
-    path:     /prova-twig
+    path:     /prova-twig/{name}
     defaults: { _controller: AppBundle:Main:render }
+
+crea_path:
+    path: /crea-utenti
+    defaults: { _controller: AppBundle:Main:createUsersAndGroup }

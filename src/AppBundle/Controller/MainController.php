@@ -72,7 +72,26 @@ class MainController extends Controller
         $em->flush();
 
     	return array(
-            'return' => "ok");
+            'return' => "ok"
+            );
+    }
+
+    /**
+     * Show random users and group.
+     *
+     * @Route("/prova-doctrine", name="prova-doctrine")
+     * @Method("GET")
+     * @Template("AppBundle:Main:prova-doctrine.html.twig")
+     */
+    public function showUsersAndGroup()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT u.id, u.nome, u.cognome, u.email, g.nome as gruppo FROM AppBundle:Utenti u JOIN AppBundle:Gruppo g WHERE u.gruppo = g.id");
+        $users = $query->getResult();
+        shuffle($users);
+        return array(
+            'users' => $users,
+            );
     }
 
 }

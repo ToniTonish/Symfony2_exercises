@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Utenti</h1>
+
+    <table class="record_list">
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ user.nome }}</td>
+            </tr>
+            <tr>
+                <th>Cognome</th>
+                <td>{{ user.cognome }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Gruppo</th>
+                <td>{{ user.gruppo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

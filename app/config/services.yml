@@ -2,6 +2,7 @@
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
 #    parameter_name: value
+    app.random.class: AppBundle\Service\RandomGeneratorService
 
 services:
     app.new_date_time:
@@ -9,6 +10,8 @@ services:
         public: false
         tags:
             - { name: twig.extension }
+    app.random:
+        class: %app.random.class%
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

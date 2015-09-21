@@ -95,4 +95,20 @@ class MainController extends Controller
             );
     }
 
+    /**
+     * Show random users and group.
+     *
+     * @Route("/prova-symfony", name="prova-symfony")
+     * @Method("GET")
+     * @Template("AppBundle:Main:prova-symfony.html.twig")
+     */
+    public function provaSymfony()
+    {
+        $randomNumber = $this->get('app.random');
+
+        return array(
+            'randomNumber' => $randomNumber->generateRandomNumber()
+            );
+    }
+
 }

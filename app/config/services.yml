@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
+    app.new_date_time:
+        class: AppBundle\Twig\NewDateTime
+        public: false
+        tags:
+            - { name: twig.extension }
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

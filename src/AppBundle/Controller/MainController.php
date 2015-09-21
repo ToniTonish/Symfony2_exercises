@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AppBundle\Entity\Gruppo;
 use AppBundle\Entity\Utenti;
+use AppBundle\DQL\RandFunction;
 
 /**
  * Gruppo controller.
@@ -86,9 +87,9 @@ class MainController extends Controller
     public function showUsersAndGroup()
     {
         $em = $this->getDoctrine()->getManager();
-        $query = $em->createQuery("SELECT u.id, u.nome, u.cognome, u.email, g.nome as gruppo FROM AppBundle:Utenti u JOIN AppBundle:Gruppo g WHERE u.gruppo = g.id");
+        $query = $em->createQuery("SELECT RAND() as HIDDEN rand, u.id, u.nome, u.cognome, u.email, g.nome as gruppo FROM AppBundle:Utenti u JOIN AppBundle:Gruppo g WHERE u.gruppo = g.id ORDER BY rand");
         $users = $query->getResult();
-        shuffle($users);
+        //shuffle($users);
         return array(
             'users' => $users,
             );
